@@ -1,3 +1,5 @@
+import { emailReg, pwReg } from "./textReg.js";
+
 const emailInput = document.querySelector("#userEmail");
 const pwdInput = document.querySelector("#userPassword");
 const loginBtn = document.querySelector(".btn-login");
@@ -35,14 +37,3 @@ const liveCheckingEmail = function () {
 
 loginBtn.addEventListener("click", handleClick);
 emailInput.addEventListener("input", liveCheckingEmail);
-
-function emailReg(text) {
-  const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(text).toLowerCase());
-}
-
-function pwReg(text) {
-  const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
-  return re.test(String(text).toLowerCase());
-}
