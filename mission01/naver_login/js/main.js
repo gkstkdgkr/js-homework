@@ -13,7 +13,7 @@ const handleClick = function (e) {
   const emailCheck = emailInput.value.trim();
   const pwdCheck = pwdInput.value.trim();
 
-  if (emailReg(emailCheck)) {
+  if (emailReg(emailCheck) && pwReg(pwdCheck)) {
     if (emailCheck === user.id && pwdCheck === user.pw) {
       window.location.href = "welcome.html";
     } else {
@@ -24,7 +24,17 @@ const handleClick = function (e) {
   }
 };
 
+const liveCheckingEmail = function () {
+  const emailCheck = emailInput.value.trim();
+  if (!emailReg(emailCheck)) {
+    errorPage.style.display = "inline-block";
+  } else {
+    errorPage.style.display = "none";
+  }
+};
+
 loginBtn.addEventListener("click", handleClick);
+emailInput.addEventListener("input", liveCheckingEmail);
 
 function emailReg(text) {
   const re =
