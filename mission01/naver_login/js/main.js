@@ -3,7 +3,7 @@ import { emailReg, pwReg } from "./textReg.js";
 const emailInput = document.querySelector("#userEmail");
 const pwdInput = document.querySelector("#userPassword");
 const loginBtn = document.querySelector(".btn-login");
-const errorPage = document.querySelector(".error-message");
+const errorMessage = document.querySelector(".error-message");
 
 const user = {
   id: "ggg@ggg.ggg",
@@ -22,8 +22,17 @@ const handleClick = function (e) {
       alert("아이디 혹은 비밀번호가 옳지 않습니다.");
     }
   } else {
-    emailInput.classList.add("is--invalid");
-    // errorPage.style.display = "inline-block";
+    if (!emailReg(emailCheck)) {
+      emailInput.classList.add("is--invalid");
+    } else {
+      emailInput.classList.remove("is--invalid");
+    }
+
+    if (!pwReg(pwdCheck)) {
+      pwdInput.classList.add("is--invalid");
+    } else {
+      pwdInput.classList.remove("is--invalid");
+    }
   }
 };
 
@@ -31,12 +40,20 @@ const liveCheckingEmail = function () {
   const emailCheck = emailInput.value.trim();
   if (!emailReg(emailCheck)) {
     emailInput.classList.add("is--invalid");
-    // errorPage.style.display = "inline-block";
   } else {
     emailInput.classList.remove("is--invalid");
-    // errorPage.style.display = "none";
+  }
+};
+
+const liveCheckingPwd = function () {
+  const pwdCheck = pwdInput.value.trim();
+  if (!pwReg(pwdCheck)) {
+    pwdInput.classList.add("is--invalid");
+  } else {
+    pwdInput.classList.remove("is--invalid");
   }
 };
 
 loginBtn.addEventListener("click", handleClick);
 emailInput.addEventListener("input", liveCheckingEmail);
+pwdInput.addEventListener("input", liveCheckingPwd);
