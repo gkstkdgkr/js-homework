@@ -22,16 +22,19 @@ const handleClick = function (e) {
       alert("아이디 혹은 비밀번호가 옳지 않습니다.");
     }
   } else {
-    errorPage.style.display = "inline-block";
+    emailInput.classList.add("is--invalid");
+    // errorPage.style.display = "inline-block";
   }
 };
 
 const liveCheckingEmail = function () {
   const emailCheck = emailInput.value.trim();
   if (!emailReg(emailCheck)) {
-    errorPage.style.display = "inline-block";
+    emailInput.classList.add("is--invalid");
+    // errorPage.style.display = "inline-block";
   } else {
-    errorPage.style.display = "none";
+    emailInput.classList.remove("is--invalid");
+    // errorPage.style.display = "none";
   }
 };
 
