@@ -3,7 +3,8 @@ import { emailReg, pwReg } from "./textReg.js";
 const emailInput = document.querySelector("#userEmail");
 const pwdInput = document.querySelector("#userPassword");
 const loginBtn = document.querySelector(".btn-login");
-const errorMessage = document.querySelector(".error-message");
+const emailError = document.querySelector("#userEmailError");
+const passwordError = document.querySelector("#userPasswordError");
 
 const user = {
   id: "ggg@ggg.ggg",
@@ -23,15 +24,19 @@ const handleClick = function (e) {
     }
   } else {
     if (!emailReg(emailCheck)) {
-      emailInput.classList.add("is--invalid");
+      // emailInput.classList.add("is--invalid");
+      emailError.style.display = "inline-block";
     } else {
-      emailInput.classList.remove("is--invalid");
+      // emailInput.classList.remove("is--invalid");
+      emailError.style.display = "none";
     }
 
     if (!pwReg(pwdCheck)) {
-      pwdInput.classList.add("is--invalid");
+      // pwdInput.classList.add("is--invalid");
+      passwordError.style.display = "inline-block";
     } else {
-      pwdInput.classList.remove("is--invalid");
+      // pwdInput.classList.remove("is--invalid");
+      passwordError.style.display = "none";
     }
   }
 };
@@ -39,18 +44,22 @@ const handleClick = function (e) {
 const liveCheckingEmail = function () {
   const emailCheck = emailInput.value.trim();
   if (!emailReg(emailCheck)) {
-    emailInput.classList.add("is--invalid");
+    // emailInput.classList.add("is--invalid");
+    emailError.style.display = "inline-block";
   } else {
-    emailInput.classList.remove("is--invalid");
+    // emailInput.classList.remove("is--invalid");
+    emailError.style.display = "none";
   }
 };
 
 const liveCheckingPwd = function () {
   const pwdCheck = pwdInput.value.trim();
   if (!pwReg(pwdCheck)) {
-    pwdInput.classList.add("is--invalid");
+    // pwdInput.classList.add("is--invalid");
+    passwordError.style.display = "inline-block";
   } else {
-    pwdInput.classList.remove("is--invalid");
+    // pwdInput.classList.remove("is--invalid");
+    passwordError.style.display = "none";
   }
 };
 
